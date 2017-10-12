@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<!-- scan all of the classes in the Web package, to create bean and and 
+		the feature of automatic dependency injection -->
+	<context:component-scan base-package="com.accenture" />
+	<mvc:annotation-driven />
+
+	<!-- don't handle the static resource -->
+	<mvc:default-servlet-handler />
+
+	<!-- These two classes are used to start the Spring MVC annotation and join 
+		the controller and method mapping into the container -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+	<bean id="checkJosephArgu" class="com.accenture.service.impl.CheckJosephArgu"></bean>
+	<bean id="serviceException" class="com.accenture.exception.ServiceException">
+	</bean>
+	<bean id="businessException" class="com.accenture.exception.BusinessException"></bean>
+	<bean id="josephProblemImpl" class="com.accenture.service.impl.JosephProblemImpl">
+		<property name="checkJosephArgu" ref="checkJosephArgu"></property>
+		<property name="serviceException" ref="serviceException"></property>
+	</bean>
+	<bean id="josephBusninessImpl" class="com.accenture.business.impl.JosephBusninessImpl">
+		<property name="josephProblem" ref="josephProblemImpl"></property>
+	</bean>
+
+	<bean id="josephController" class="com.accenture.controller.JosephController">
+		<property name="josephBusniness" ref="josephBusninessImpl"></property>
+		<property name="businessException" ref="businessException"></property>
+	</bean>
+	<!-- This class is used to analyze Spring MVC view -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+</beans>

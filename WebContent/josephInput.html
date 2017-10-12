@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='css/input.css' rel='stylesheet' type='text/css' />  
+<style type="text/css">
+</style>
+<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="js/JosephProblem.js"></script>
+
+<script type="text/javascript"src="js/jquery.validate.min.js"></script>
+<script type="text/javascript"src="js/messages_zh.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="containerdiv">
+		<div id="contentdiv">
+			<form  name="form2" id="josephForm">
+				<table>
+					<tr>
+						<td
+							style="font-size: 28px; font-family: Arial; text-align: right;"><strong>Joseph
+								Problem</strong></td>
+					</tr>
+					<tr>
+						<td style="text-align: right;"><strong>Interval</strong></td>
+						<td><input type="text" name="josephInterval"
+							class="inputinterval" id="interval"> <label for="interval"></label></td>
+							
+							<td><strong>Result</strong></td>
+							<td><input type="text" 
+							class="inputinterval" id="result"></td>
+					</tr>
+					<tr>
+						<td style="text-align: right;"><strong>StartNo</strong> <label for="startindex"></label></td>
+						<td><input type="text" name="startIndex"
+							class="inputstartindex" id="startindex"></td>
+					</tr>
+					<tr>
+						<td style="text-align: right;"><strong>Persons</strong> <label for="josephlist"></label></td>
+						<td>
+							<div class="josephlistscrolling">
+								<ol id="josephlist" style="overflow:auto" name="josephList">
+								</ol>
+							</div>
+						</td>
+						<td>
+							<div id="hiddendiv" class="hiddendiv">
+								<input class="idrmud" type="button" value="insert"
+									onclick="insertli()"><br> <input type="button"
+									value="delete" class="idrmud" onclick="deleteli()">
+									<br> <input type="button"
+									value="moveup" class="idrmud" onclick="moveupli()">
+									<br> <input type="button"
+									value="movedown" class="idrmud" onclick="movedownli()">
+									<br> <input type="button"
+									value="rename" class="idrmud" onclick="renameli()">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align: right;"><strong></strong></td>
+						<td><input type="text" name="josephString" class="input"
+							id="stringarraay"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input class="modify" type="button" value="apend"
+							onclick="show()"><input type="button" value="clear"
+							class="modify" onclick="clearall()"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td align="left"><input type="submit" value="submit"
+							class="submit" id="submit" ></td>
+					</tr>
+				
+				</table>
+
+
+			</form>
+		</div>
+	</div>
+</body>
+</html>

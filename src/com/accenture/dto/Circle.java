@@ -22,7 +22,6 @@ public class Circle extends DataTransferObject {
 	private Integer interval;
 
 	@JsonProperty(name = "persons")
-	@NotNull(message = "persons cannot be null")
 	@NotEmpty(message = "persons cannot be null")
 	private List<String> persons;
 

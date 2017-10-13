@@ -13,11 +13,18 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
   </servlet>
+   <servlet>
+    <servlet-name>FibonacciServlet</servlet-name>
+    <servlet-class>com.accenture.servlet.FibonacciServlet</servlet-class>
+  </servlet>
    <servlet-mapping>
         <servlet-name>spring</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-
+  <servlet-mapping>
+    <servlet-name>FibonacciServlet</servlet-name>
+    <url-pattern>/one</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

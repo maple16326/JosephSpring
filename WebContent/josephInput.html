@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href='css/input.css' rel='stylesheet' type='text/css' />  
+<link href='css/input.css' rel='stylesheet' type='text/css' />
 <style type="text/css">
 </style>
 <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 <script type="text/javascript" src="js/JosephProblem.js"></script>
 
-<script type="text/javascript"src="js/jquery.validate.min.js"></script>
-<script type="text/javascript"src="js/messages_zh.js"></script>
+<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="js/messages_zh.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <title>Insert title here</title>
@@ -16,7 +16,7 @@
 <body>
 	<div id="containerdiv">
 		<div id="contentdiv">
-			<form  name="form2" id="josephForm">
+			<form name="form2" id="josephForm">
 				<table>
 					<tr>
 						<td
@@ -26,22 +26,27 @@
 					<tr>
 						<td style="text-align: right;"><strong>Interval</strong></td>
 						<td><input type="text" name="josephInterval"
-							class="inputinterval" id="interval"> <label for="interval"></label></td>
-							
-							<td><strong>Result</strong></td>
-							<td><input type="text" 
-							class="inputinterval" id="result"></td>
+							class="inputinterval" id="interval"> <label
+							for="interval"></label></td>
+
+						<td><strong>Result</strong></td>
+						<td><input type="text" class="inputinterval" id="result"></td>
 					</tr>
 					<tr>
-						<td style="text-align: right;"><strong>StartNo</strong> <label for="startindex"></label></td>
+						<td style="text-align: right;"><strong>StartNo</strong> <label
+							for="startindex"></label></td>
 						<td><input type="text" name="startIndex"
 							class="inputstartindex" id="startindex"></td>
+						<td></td>
+						<td align="center"><input type="submit" value="submit"
+							class="submit" id="submit"></td>
 					</tr>
 					<tr>
-						<td style="text-align: right;"><strong>Persons</strong> <label for="josephlist"></label></td>
+						<td style="text-align: right;"><strong>Persons</strong> <label
+							for="josephlist"></label></td>
 						<td>
 							<div class="josephlistscrolling">
-								<ol id="josephlist" style="overflow:auto" name="josephList">
+								<ol id="josephlist" style="overflow: auto" name="josephList">
 								</ol>
 							</div>
 						</td>
@@ -49,13 +54,12 @@
 							<div id="hiddendiv" class="hiddendiv">
 								<input class="idrmud" type="button" value="insert"
 									onclick="insertli()"><br> <input type="button"
-									value="delete" class="idrmud" onclick="deleteli()">
-									<br> <input type="button"
-									value="moveup" class="idrmud" onclick="moveupli()">
-									<br> <input type="button"
+									value="delete" class="idrmud" onclick="deleteli()"> <br>
+								<input type="button" value="moveup" class="idrmud"
+									onclick="moveupli()"> <br> <input type="button"
 									value="movedown" class="idrmud" onclick="movedownli()">
-									<br> <input type="button"
-									value="rename" class="idrmud" onclick="renameli()">
+								<br> <input type="button" value="rename" class="idrmud"
+									onclick="renameli()">
 							</div>
 						</td>
 					</tr>
@@ -74,10 +78,9 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td align="left"><input type="submit" value="submit"
-							class="submit" id="submit" ></td>
+
 					</tr>
-				
+
 				</table>
 
 

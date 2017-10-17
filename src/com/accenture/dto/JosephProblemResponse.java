@@ -2,14 +2,11 @@ package com.accenture.dto;
 
 import java.util.List;
 
-import com.accenture.converter.annotation.JsonProperty;
 
 public class JosephProblemResponse extends DataTransferObject {
-	@JsonProperty(name = "person")
 	private String person;
 
 	private List<Error> errors;
-
 
 	public String getPerson() {
 		return person;
@@ -27,12 +24,5 @@ public class JosephProblemResponse extends DataTransferObject {
 		this.errors = errors;
 	}
 
-/*	public String getLastPerson() {
-		return person;
-	}
-
-	public void setLastPerson(String person) {
-		this.person = person;
-	}*/
-
+	
 }

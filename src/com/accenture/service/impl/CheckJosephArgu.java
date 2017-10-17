@@ -1,58 +1,45 @@
 package com.accenture.service.impl;
 
-import com.accenture.exception.ServiceException;
+import com.accenture.exception.NegativeArgumentException;
+import com.accenture.exception.NullArgumentValueException;
 
 public class CheckJosephArgu {
 	private static final String INTERVAL_IS_NOT_A_POSITIVE_NUMBER = "interval is not a positive number";
 	private static final String START_NO_IS_NOT_A_POSITIVE_NUMBER = "startNo is not a positive number";
-	private static final String INTERVALS_IS_NOT_A_NUMBER = "intervals is not a number!";
-	private static final String START_NO_IS_NOT_A_NUMBER = "startNo is not a number!";
 	private static final String INTERVAL_IS_NULL = "interval is null!";
 	private static final String START_IS_NULL = "start is null!";
 
-	public Boolean checkJosephParameter(String start, String interval, String[] persons) throws ServiceException {
-		int startNo;
-		int intervalInt;
-		Boolean bl=false;
-	
-		if(start==null){
-		    
-			throw new ServiceException(START_IS_NULL);
-	    
-		}
-		if(interval==null){
-		
-			throw new ServiceException(INTERVAL_IS_NULL);
+	public Boolean checkJosephParameter(Integer start, Integer interval, String[] persons)
+			throws NullArgumentValueException, NegativeArgumentException {
+		Boolean bl = false;
+
+		if (start == null) {
+			throw new NullArgumentValueException(START_IS_NULL);
 
 		}
-		if(persons==null){
-	
-			throw new ServiceException(INTERVAL_IS_NULL);
+		if (interval == null) {
+
+			throw new NullArgumentValueException(INTERVAL_IS_NULL);
+
 		}
-		else {
+		if (persons == null) {
 
-			try {
-				startNo = Integer.parseInt(start);
+			throw new NullArgumentValueException(INTERVAL_IS_NULL);
+		} else {
 
-			} catch (NumberFormatException e) {
+			if (start < 0 && interval > 0) {
+				throw new NegativeArgumentException(START_NO_IS_NOT_A_POSITIVE_NUMBER);
+			} else if (start > 0 && interval < 0) {
+				throw new NegativeArgumentException(INTERVAL_IS_NOT_A_POSITIVE_NUMBER);
+			} else if (start < 0 && interval < 0) {
+				throw new NegativeArgumentException(
+						START_NO_IS_NOT_A_POSITIVE_NUMBER + "&&" + INTERVAL_IS_NOT_A_POSITIVE_NUMBER);
 
-				throw new ServiceException(START_NO_IS_NOT_A_NUMBER, e);
-			}
-			try {
-				intervalInt = Integer.parseInt(interval);
-			} catch (NumberFormatException e) {
-				throw new ServiceException(INTERVALS_IS_NOT_A_NUMBER, e);
-			}
-			if (startNo < 0) {
-				throw new ServiceException(START_NO_IS_NOT_A_POSITIVE_NUMBER);
-			} else if (intervalInt < 0) {
-				throw new ServiceException(INTERVAL_IS_NOT_A_POSITIVE_NUMBER);
-			}
-			else {
-				bl=true;
+			} else {
+				bl = true;
 			}
 
 		}
-		return bl;}
+		return bl;
+	}
 }
- 

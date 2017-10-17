@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,12 +22,12 @@ import com.accenture.exception.BusinessException;
 @Controller
 public class JosephController {
 
+	private static final String SOMETHING_WENT_WRONG = "Something went wrong:";
+	private static final String THE_ERROR_MESSAGE_IS = "The error message is:";
+	private static final String THE_INVALID_FIELD_IS = "The invalid field is:";
 	public static final String APPLICATION_JSON_CHAR_SET_UTF_8 = "application/json;char-set=utf-8";
-
 	public static final Logger LOGGER = Logger.getLogger(JosephController.class);
-	public static final String LOG4JPROPERTIES = "log4j.properties";
 	private JosephBusiness josephBusniness;
-	private BusinessException businessException;
 
 	public JosephBusiness getJosephBusniness() {
 		return josephBusniness;
@@ -38,51 +37,37 @@ public class JosephController {
 		this.josephBusniness = josephBusniness;
 	}
 
-	public BusinessException getBusinessException() {
-		return businessException;
-	}
-
-	public void setBusinessException(BusinessException businessException) {
-		this.businessException = businessException;
-	}
-
 	@RequestMapping(value = "/Josephcontroller", method = RequestMethod.POST)
 	@ResponseBody
 	public JosephProblemResponse josephProblem(@Valid @RequestBody JosephProblemRequest josephProblemRequest,
-			BindingResult bindingResult,Errors errors) {
+			BindingResult bindingResult, Errors errors) {
 		JosephProblemResponse josephProblemResponse = new JosephProblemResponse();
-		List<Error> errorList=new ArrayList<Error>();
-		
+		List<Error> errorList = new ArrayList<>();
+
 		if (errors.hasErrors()) {
-			LOGGER.error("THE INPUT IS INVALID!");
-			List<ObjectError> error=bindingResult.getAllErrors();
-			List<FieldError>fieldErrors=bindingResult.getFieldErrors();
-			for(FieldError fieldError:fieldErrors)
-			{
-				Error jError=new Error();
-				LOGGER.error("The invalid field is:"+fieldError.getField()+fieldError.getDefaultMessage());
+			List<FieldError> fieldErrors = bindingResult.getFieldErrors();
+			for (FieldError fieldError : fieldErrors) {
+				Error jError = new Error();
+				LOGGER.error(THE_INVALID_FIELD_IS + fieldError.getField() + THE_ERROR_MESSAGE_IS
+						+ fieldError.getDefaultMessage());
 				jError.setField(fieldError.getField());
 				jError.setMessage(fieldError.getDefaultMessage());
 				errorList.add(jError);
-				
+
 			}
 			josephProblemResponse.setErrors(errorList);
-			for(int i=0;i<bindingResult.getAllErrors().size();i++){
-				LOGGER.error(error.get(i).getDefaultMessage());
-			}
 			josephProblemResponse.setPerson(null);
-			return josephProblemResponse;
 
-		} else {
-			
-			try {
-				josephProblemResponse = josephBusniness.doJosephCalcu(josephProblemRequest);
-
-			} catch (BusinessException e) {
-				LOGGER.error("failed", e);
-			}
-			return josephProblemResponse;
 		}
+
+		try {
+			josephProblemResponse = josephBusniness.doJosephCalcu(josephProblemRequest);
+
+		} catch (BusinessException e) {
+			LOGGER.error(SOMETHING_WENT_WRONG, e.getCause());
+		}
+
+		return josephProblemResponse;
 
 	}
 }

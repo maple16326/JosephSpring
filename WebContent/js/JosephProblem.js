@@ -125,7 +125,7 @@ function sub() {
 		type : "post",
 		dataType : "json",
 		contentType : "application/json;char-set=utf-8",
-		url : "Josephcontroller",
+		url : "JosephProblemcontroller",
 		data : encoded,
 		success : function(data, textStatus) {
 			var josephResponse = eval(data);

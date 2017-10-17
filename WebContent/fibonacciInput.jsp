@@ -7,10 +7,10 @@
 <style type="text/css">
 @import url('input.css');
 </style>
-<title>Insert title here</title>
+<title>fibonacciInput</title>
 </head>
 <body>
-<form  action="one" name=”form1” method="get">
+<form  action="FibonacciController" name=”form1” method="get">
 Input fibonacci length:<input type="text" name="fibonaccilength" class="input">
 <input type="submit" value="submit" class="submitfibonacci">
 </form>

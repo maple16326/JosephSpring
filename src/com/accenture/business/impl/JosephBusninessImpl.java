@@ -7,35 +7,31 @@ import com.accenture.dto.JosephProblemRequest;
 import com.accenture.dto.JosephProblemResponse;
 
 import com.accenture.exception.BusinessException;
-import com.accenture.service.JosephProblem;
-import com.accenture.service.impl.JosephProblemImpl;
+import com.accenture.service.JosephService;
+import com.accenture.service.impl.JosephServiceImpl;
 
 public class JosephBusninessImpl implements JosephBusiness {
-	private JosephProblem josephProblem;
+	private JosephService josephProblem;
 
-	public JosephProblem getJosephProblem() {
+	public JosephService getJosephProblem() {
 		return josephProblem;
 	}
 
-
-
-	public void setJosephProblem(JosephProblem josephProblem) {
+	public void setJosephProblem(JosephService josephProblem) {
 		this.josephProblem = josephProblem;
 	}
-
-
 
 	public JosephProblemResponse doJosephCalcu(JosephProblemRequest request) throws BusinessException {
 
 		JosephProblemResponse response = new JosephProblemResponse();
 		int interval = request.getCircle().getInterval();
 		int start = request.getCircle().getStart();
-		List<String>persons = request.getCircle().getPersons();
-		JosephProblem joseph = new JosephProblemImpl();
+		List<String> persons = request.getCircle().getPersons();
+		JosephService joseph = new JosephServiceImpl();
 		String person = null;
 		try {
 			String[] personArray = new String[persons.size()];
-			//convert list to array
+			// convert list to array
 			persons.toArray(personArray);
 			person = joseph.solveJosephProblem(personArray, interval, start);
 			response.setPerson(person);

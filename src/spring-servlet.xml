@@ -15,7 +15,6 @@
 		the feature of automatic dependency injection -->
 	<context:component-scan base-package="com.accenture" />
 	<mvc:annotation-driven />
-
 	<!-- don't handle the static resource -->
 	<mvc:default-servlet-handler />
 
@@ -44,7 +43,34 @@
 	<!-- This class is used to analyze Spring MVC view -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/jsp" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
+	</bean>
+	<!-- Specify your own defined validator -->
+	<mvc:annotation-driven validator="validator" />
+
+	<!-- The following validator Conversionservice will automatically register 
+		when using MVC: Annotation-driven -->
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
+		<!--default to use Classpath validationmessages. Properties if not added -->
+		<property name="validationMessageSource" ref="messageSource" />
+	</bean>
+	<!-- Internationalized Message resource files (mainly for display/error 
+		message customization in this system) -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<!-- Be sure to navigate to classpath in the Web environment otherwise 
+					default to search at current Web application -->
+				<value>classpath:messages</value>
+				<value>classpath:org/hibernate/validator/ValidationMessages</value>
+			</list>
+		</property>
+		<property name="useCodeAsDefaultMessage" value="false" />
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="cacheSeconds" value="60" />
 	</bean>
 </beans>

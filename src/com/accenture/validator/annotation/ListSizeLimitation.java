@@ -24,7 +24,7 @@ import com.accenture.validator.ListSizeLimitationValidator;
 public @interface ListSizeLimitation {
     String listFieldName();//start interval
     String limitedFieldName();//persons
-String message() default "The field is Longer than persons.";
+String message() default "The field is longer than persons.";
     
     Class<?>[] groups() default {};
     

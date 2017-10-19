@@ -25,6 +25,7 @@ public class NoRepetitionListValidator implements ConstraintValidator<NoRepetiti
 				}
 			}
 		}
+		
 		return true;
 	
 

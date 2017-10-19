@@ -12,9 +12,14 @@ import com.accenture.service.JosephService;
 
 public class JosephServiceImpl implements JosephService {
 	private static final Logger LOGGER = Logger.getLogger(JosephServiceImpl.class);
-
+    private CheckJosephArgu checkJosephArgument;
+	public CheckJosephArgu getCheckJosephArgument() {
+		return checkJosephArgument;
+	}
+	public void setCheckJosephArgument(CheckJosephArgu checkJosephArgument) {
+		this.checkJosephArgument = checkJosephArgument;
+	}
 	public String solveJosephProblem(String[] persons, int interval, int startNo) throws BusinessException {
-		CheckJosephArgu checkJosephArgument = new CheckJosephArgu();
 		try {
 			checkJosephArgument.checkJosephParameter(startNo, interval, persons);
 			List<String> person = new ArrayList<>();

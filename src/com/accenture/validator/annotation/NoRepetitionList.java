@@ -20,7 +20,7 @@ import com.accenture.validator.NoRepetitionListValidator;
 @Target({ TYPE, FIELD, METHOD })
 @Constraint(validatedBy = NoRepetitionListValidator.class)
 public @interface NoRepetitionList {
-String message() default "The LIST is Repetiton.";
+String message() default "The list is repetiton.";
     
     Class<?>[] groups() default {};
     

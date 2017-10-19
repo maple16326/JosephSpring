@@ -27,13 +27,12 @@ public class JosephBusninessImpl implements JosephBusiness {
 		int interval = request.getCircle().getInterval();
 		int start = request.getCircle().getStart();
 		List<String> persons = request.getCircle().getPersons();
-		JosephService joseph = new JosephServiceImpl();
 		String person = null;
 		try {
 			String[] personArray = new String[persons.size()];
 			// convert list to array
 			persons.toArray(personArray);
-			person = joseph.solveJosephProblem(personArray, interval, start);
+			person = josephProblem.solveJosephProblem(personArray, interval, start);
 			response.setPerson(person);
 			response.setErrors(null);
 		} catch (Exception e) {

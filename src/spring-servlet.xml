@@ -2,11 +2,14 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
@@ -14,6 +17,7 @@
 	<!-- scan all of the classes in the Web package, to create bean and and 
 		the feature of automatic dependency injection -->
 	<context:component-scan base-package="com.accenture" />
+	<aop:aspectj-autoproxy proxy-target-class="true" />
 	<mvc:annotation-driven />
 	<!-- don't handle the static resource -->
 	<mvc:default-servlet-handler />
@@ -24,12 +28,12 @@
 		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
-	<bean id="checkJosephArgu" class="com.accenture.service.impl.CheckJosephArgu"></bean>
+	
 
 	<bean id="businessException" class="com.accenture.exception.BusinessException"></bean>
+	<bean id="checkJosephArgu" class="com.accenture.service.impl.CheckJosephArgu"></bean>
 	<bean id="josephServiceImpl" class="com.accenture.service.impl.JosephServiceImpl">
-
-	</bean>
+		<property name="checkJosephArgument" ref="checkJosephArgu"></property></bean>
 	<bean id="josephBusninessImpl" class="com.accenture.business.impl.JosephBusninessImpl">
 		<property name="josephProblem" ref="josephServiceImpl"></property>
 	</bean>
@@ -38,8 +42,10 @@
 		<property name="josephBusniness" ref="josephBusninessImpl"></property>
 	</bean>
 	<bean id="fibonacciServiceImpl" class="com.accenture.service.impl.FibonacciServiceImpl">
+
 	</bean>
 	<bean id="fibonacciController" class="com.accenture.controller.FibonacciController"></bean>
+	<bean id="logAspect" class="com.accenture.aop.LogAspect"></bean>
 	<!-- This class is used to analyze Spring MVC view -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

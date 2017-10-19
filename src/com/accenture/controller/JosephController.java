@@ -57,7 +57,7 @@ public class JosephController {
 			}
 			josephProblemResponse.setErrors(errorList);
 			josephProblemResponse.setPerson(null);
-
+			return josephProblemResponse;
 		}
 
 		try {

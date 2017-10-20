@@ -35,7 +35,7 @@ public class JosephBusninessImpl implements JosephBusiness {
 			person = josephProblem.solveJosephProblem(personArray, interval, start);
 			response.setPerson(person);
 			response.setErrors(null);
-		} catch (Exception e) {
+		} catch (BusinessException e) {
 			throw new BusinessException("Bussiness level failed!", e);
 		}
 

@@ -40,7 +40,6 @@ public class JosephServiceImpl implements JosephService {
 
 			}
 			LOGGER.info("the last element is:" + person.get(0));
-
 			return person.get(0);
 		} catch (NullArgumentValueException e) {
 			throw new BusinessException("Bussiness level failed!", e);

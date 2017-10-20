@@ -18,7 +18,7 @@ public class FibonacciServiceImpl implements FibonacciService {
 	 * @return
 	 * @exception 
 	 */
-	public  List<Long> fibonacci(long n) {
+	public  List<Long> fibonacci(long n) throws IllegalArgumentException{
 		if (n > 0) {
 			List<Long> list = new ArrayList<>();
 			Long i;

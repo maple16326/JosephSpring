@@ -31,11 +31,11 @@ public class CheckJosephArguTest {
 		List<String> persons = new ArrayList<>();
 		persons.add("a");
 		persons.add("b");
-		String[] personsStr = new String[persons.size()];
-		persons.toArray(personsStr);
+		//String[] personsStr = new String[persons.size()];
+		//persons.toArray(personsStr);
 		thrown.expect(NullArgumentValueException.class);
 		thrown.expectMessage(START_IS_NULL);
-		checkJosephArgu.checkJosephParameter(null, 1, personsStr);
+		checkJosephArgu.checkJosephParameter(null, 1, persons);
 
 	}
 
@@ -47,11 +47,11 @@ public class CheckJosephArguTest {
 		List<String> persons = new ArrayList<>();
 		persons.add("a");
 		persons.add("b");
-		String[] personsStr = new String[persons.size()];
-		persons.toArray(personsStr);
+		//String[] personsStr = new String[persons.size()];
+		//persons.toArray(personsStr);
 		thrown.expect(NullArgumentValueException.class);
 		thrown.expectMessage(INTERVAL_IS_NULL);
-		checkJosephArgu.checkJosephParameter(0, null, personsStr);
+		checkJosephArgu.checkJosephParameter(0, null, persons);
 
 	}
 
@@ -75,11 +75,11 @@ public class CheckJosephArguTest {
 		List<String> persons = new ArrayList<>();
 		persons.add("a");
 		persons.add("b");
-		String[] personsStr = new String[persons.size()];
-		persons.toArray(personsStr);
+		//String[] personsStr = new String[persons.size()];
+		//persons.toArray(personsStr);
 		thrown.expect(NullArgumentValueException.class);
 		thrown.expectMessage(START_IS_NULL + AND + INTERVAL_IS_NULL);
-		checkJosephArgu.checkJosephParameter(null, null, personsStr);
+		checkJosephArgu.checkJosephParameter(null, null, persons);
 	}
 
 	@Test
@@ -118,11 +118,11 @@ public class CheckJosephArguTest {
 		List<String> persons = new ArrayList<>();
 		persons.add("a");
 		persons.add("b");
-		String[] personsStr = new String[persons.size()];
-		persons.toArray(personsStr);
+	//	String[] personsStr = new String[persons.size()];
+	//	persons.toArray(personsStr);
 		thrown.expect(NegativeArgumentException.class);
 		thrown.expectMessage(INTERVAL_IS_NOT_A_POSITIVE_NUMBER);
-		checkJosephArgu.checkJosephParameter(1, -2, personsStr);
+		checkJosephArgu.checkJosephParameter(1, -2, persons);
 
 	}
 
@@ -134,11 +134,11 @@ public class CheckJosephArguTest {
 		List<String> persons = new ArrayList<>();
 		persons.add("a");
 		persons.add("b");
-		String[] personsStr = new String[persons.size()];
-		persons.toArray(personsStr);
+		//String[] personsStr = new String[persons.size()];
+	//	persons.toArray(personsStr);
 		thrown.expect(NegativeArgumentException.class);
 		thrown.expectMessage(START_NO_IS_NOT_A_POSITIVE_NUMBER);
-		checkJosephArgu.checkJosephParameter(-1, 1, personsStr);
+		checkJosephArgu.checkJosephParameter(-1, 1, persons);
 
 	}
 
@@ -150,11 +150,11 @@ public class CheckJosephArguTest {
 		List<String> persons = new ArrayList<>();
 		persons.add("a");
 		persons.add("b");
-		String[] personsStr = new String[persons.size()];
-		persons.toArray(personsStr);
+		//String[] personsStr = new String[persons.size()];
+		//persons.toArray(personsStr);
 		thrown.expect(NegativeArgumentException.class);
 		thrown.expectMessage(START_NO_IS_NOT_A_POSITIVE_NUMBER + AND + INTERVAL_IS_NOT_A_POSITIVE_NUMBER);
-		checkJosephArgu.checkJosephParameter(-1, -1, personsStr);
+		checkJosephArgu.checkJosephParameter(-1, -1, persons);
 
 	}
 
@@ -166,9 +166,9 @@ public class CheckJosephArguTest {
 		List<String> persons = new ArrayList<>();
 		persons.add("a");
 		persons.add("b");
-		String[] personsStr = new String[persons.size()];
-		persons.toArray(personsStr);
-		Boolean bl = checkJosephArgu.checkJosephParameter(1, 1, personsStr);
+		//String[] personsStr = new String[persons.size()];
+		//persons.toArray(personsStr);
+		Boolean bl = checkJosephArgu.checkJosephParameter(1, 1, persons);
 		assertEquals(bl, true);
 	}
 	@Test
@@ -179,9 +179,9 @@ public class CheckJosephArguTest {
 		List<String> persons = new ArrayList<>();
 		persons.add("a");
 		persons.add("b");
-		String[] personsStr = new String[persons.size()];
-		persons.toArray(personsStr);
-		Boolean bl = checkJosephArgu.checkJosephParameter(0, 0, personsStr);
+		//String[] personsStr = new String[persons.size()];
+		//persons.toArray(personsStr);
+		Boolean bl = checkJosephArgu.checkJosephParameter(0, 0, persons);
 		assertEquals(bl, true);
 	}
 }

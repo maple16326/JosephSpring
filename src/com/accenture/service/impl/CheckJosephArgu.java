@@ -1,5 +1,7 @@
 package com.accenture.service.impl;
 
+import java.util.List;
+
 import com.accenture.exception.NegativeArgumentException;
 import com.accenture.exception.NullArgumentValueException;
 
@@ -11,7 +13,7 @@ public class CheckJosephArgu {
 	private static final String INTERVAL_IS_NULL = "interval is null! ";
 	private static final String START_IS_NULL = "start is null! ";
 
-	public Boolean checkJosephParameter(Integer start, Integer interval, String[] persons)
+	public Boolean checkJosephParameter(Integer start, Integer interval, List<String>persons)
 			throws NullArgumentValueException, NegativeArgumentException {
 		Boolean bl = false;
 

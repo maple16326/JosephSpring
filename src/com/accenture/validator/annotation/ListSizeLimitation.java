@@ -22,12 +22,14 @@ import com.accenture.validator.ListSizeLimitationValidator;
 @Constraint(validatedBy = ListSizeLimitationValidator.class)
 @Repeatable(ListSizeLimitations.class)
 public @interface ListSizeLimitation {
-    String listFieldName();//start interval
-    String limitedFieldName();//persons
-String message() default "The field is longer than persons.";
-    
-    Class<?>[] groups() default {};
-    
-    Class<? extends Payload>[] payload() default{};
+	String listFieldName();// start interval
+
+	String limitedFieldName();// persons
+
+	String message() default "The field is out of limits";
+
+	Class<?>[] groups() default {};
+
+	Class<? extends Payload>[] payload() default {};
 }
  

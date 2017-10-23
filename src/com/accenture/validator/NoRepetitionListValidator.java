@@ -1,7 +1,9 @@
 package com.accenture.validator;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -16,18 +18,12 @@ public class NoRepetitionListValidator implements ConstraintValidator<NoRepetiti
 
 	@Override
 	public boolean isValid(List<?> value, ConstraintValidatorContext context) {
-		for (int i = 0; i < value.size() - 1; i++) {
-			Object temp = value.get(i);
-			for (int j = i + 1; j < value.size(); j++) {
-				if (temp.equals(value.get(j))) {
 
-					return false;
-				}
-			}
-		}
-		
+		Set personsNoRepetiton = new HashSet(value);
+		if(personsNoRepetiton.size()==value.size())
 		return true;
-	
+		else
+		return false;
 
 	}
 

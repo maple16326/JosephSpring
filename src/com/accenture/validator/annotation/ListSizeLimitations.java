@@ -16,10 +16,6 @@ import javax.validation.Payload;
 @Target({ TYPE, FIELD, METHOD })
 public @interface ListSizeLimitations {
 	ListSizeLimitation[] value();
-String message() default "The field is Longer than persons.";
-    
-    Class<?>[] groups() default {};
-    
-    Class<? extends Payload>[] payload() default{};
+
 }
  

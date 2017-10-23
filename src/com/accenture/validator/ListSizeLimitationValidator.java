@@ -16,13 +16,9 @@ public class ListSizeLimitationValidator implements ConstraintValidator<ListSize
 	private String verifiedField;
 
 	public void initialize(ListSizeLimitation listSizeLimitation) {
-		/*
-		 * this.field = listSizeLimitation.limitedFieldName();
-		 * this.verifiedField = listSizeLimitation.listFieldName();
-		 */
+	
 		this.field = listSizeLimitation.listFieldName();// persons
-		this.verifiedField = listSizeLimitation.limitedFieldName();// start &&
-																	// interval
+		this.verifiedField = listSizeLimitation.limitedFieldName();// start && interval
 
 	}
 
@@ -33,13 +29,21 @@ public class ListSizeLimitationValidator implements ConstraintValidator<ListSize
 
 			String[] fieldValue = BeanUtils.getArrayProperty(value, field);
 			String verifyFieldValue = BeanUtils.getProperty(value, verifiedField);
-			if (Integer.parseInt(verifyFieldValue) <= fieldValue.length) {
+			//if(verifyFieldValue!=null)
+			if (verifyFieldValue!=null&&Integer.parseInt(verifyFieldValue) <= fieldValue.length) {
 				return true;
-			} else
-				return false;
+			} else{
+				context.disableDefaultConstraintViolation();
+				context.buildConstraintViolationWithTemplate(context.getDefaultConstraintMessageTemplate())
+					.addNode(verifiedField).addConstraintViolation();
+				return false;}
+				
 		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
 			return false;
 		}
+		
+		
+			 
 
 	}
 

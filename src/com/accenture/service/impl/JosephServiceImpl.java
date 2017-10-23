@@ -19,22 +19,22 @@ public class JosephServiceImpl implements JosephService {
 	public void setCheckJosephArgument(CheckJosephArgu checkJosephArgument) {
 		this.checkJosephArgument = checkJosephArgument;
 	}
-	public String solveJosephProblem(String[] persons, int interval, int startNo) throws BusinessException {
+	public String solveJosephProblem(List<String> persons, int interval, int startNo) throws BusinessException {
 		try {
 			checkJosephArgument.checkJosephParameter(startNo, interval, persons);
 			List<String> person = new ArrayList<>();
-			person.addAll(Arrays.asList(persons));
+			//person.addAll(Arrays.asList(persons));
 			int k = startNo - 1;
 			LOGGER.debug(person);
-			while (person.size() > 1) {
+			while (persons.size() > 1) {
 				k = k + interval;
-				k = k % (person.size()) - 1;
+				k = k % (persons.size()) - 1;
 				if (k < 0) {
-					LOGGER.debug("reomove:" + person.get(person.size() - 1));
+					LOGGER.debug("reomove:" + persons.get(person.size() - 1));
 					person.remove(person.size() - 1);
 					k = 0;
 				} else {
-					LOGGER.debug("reomove:" + person.get(k));
+					LOGGER.debug("reomove:" + persons.get(k));
 					person.remove(k);
 				}
 

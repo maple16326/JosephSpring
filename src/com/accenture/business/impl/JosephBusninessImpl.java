@@ -29,10 +29,10 @@ public class JosephBusninessImpl implements JosephBusiness {
 		List<String> persons = request.getCircle().getPersons();
 		String person = null;
 		try {
-			String[] personArray = new String[persons.size()];
+			//String[] personArray = new String[persons.size()];
 			// convert list to array
-			persons.toArray(personArray);
-			person = josephProblem.solveJosephProblem(personArray, interval, start);
+			//persons.toArray(personArray);
+			person = josephProblem.solveJosephProblem(persons, interval, start);
 			response.setPerson(person);
 			response.setErrors(null);
 		} catch (BusinessException e) {

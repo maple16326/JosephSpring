@@ -18,13 +18,15 @@ public class NoRepetitionListValidator implements ConstraintValidator<NoRepetiti
 
 	@Override
 	public boolean isValid(List<?> value, ConstraintValidatorContext context) {
-
-		Set personsNoRepetiton = new HashSet(value);
-		if(personsNoRepetiton.size()==value.size())
-		return true;
-		else
-		return false;
-
+		if (value != null) {
+			Set personsNoRepetiton = new HashSet(value);
+			if (personsNoRepetiton.size() == value.size())
+				return true;
+			else
+				return false;
+		}
+		else 
+			return true;
 	}
 
 }

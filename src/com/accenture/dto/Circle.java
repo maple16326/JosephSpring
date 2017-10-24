@@ -20,7 +20,7 @@ public class Circle extends DataTransferObject {
 	private Integer interval;
 
 	@NotEmpty(message = "{value.illegal.empty}")
-	@NoRepetitionList
+	@NoRepetitionList(message = "{value.illegal.repetition}")
 	private List<String> persons;
 
 	public List<String> getPersons() {

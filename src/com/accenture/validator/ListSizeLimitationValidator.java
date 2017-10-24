@@ -26,17 +26,19 @@ public class ListSizeLimitationValidator implements ConstraintValidator<ListSize
 	public boolean isValid(Object value, ConstraintValidatorContext context) {
 
 		try {
-
-			String[] fieldValue = BeanUtils.getArrayProperty(value, field);
+			if(value!=null)
+			{String[] fieldValue = BeanUtils.getArrayProperty(value, field);
 			String verifyFieldValue = BeanUtils.getProperty(value, verifiedField);
 			//if(verifyFieldValue!=null)
-			if (verifyFieldValue!=null&&Integer.parseInt(verifyFieldValue) <= fieldValue.length) {
+			if (fieldValue!=null&&verifyFieldValue!=null&&Integer.parseInt(verifyFieldValue) <= fieldValue.length) {
 				return true;
 			} else{
 				context.disableDefaultConstraintViolation();
 				context.buildConstraintViolationWithTemplate(context.getDefaultConstraintMessageTemplate())
 					.addNode(verifiedField).addConstraintViolation();
-				return false;}
+				return true;}}
+			else
+				return true;
 				
 		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
 			return false;

@@ -56,10 +56,6 @@ public class JosephBusninessImplTest {
 		circle.setPersons(persons);
 		josephProblemRequest.setCircle(circle);
 		when(josephService.solveJosephProblem(persons, 1, 0)).thenReturn("a");
-		josephBusniness.doJosephCalcu(josephProblemRequest);
-		JosephProblemResponse josephProblemResponse=new JosephProblemResponse();
-		josephProblemResponse.setErrors(null);
-		josephProblemResponse.setPerson("a");
 		assertEquals("a",josephBusniness.doJosephCalcu(josephProblemRequest).getPerson());
 	}
 	@Test

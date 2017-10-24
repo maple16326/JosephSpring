@@ -24,5 +24,9 @@ public class JosephProblemResponse extends DataTransferObject {
 		this.errors = errors;
 	}
 
-	
+ /*   public String toString(){
+        
+        return  "{\"person\""+":\""+person+"\""+",\"errors\""+":"+errors.toString();
+        
+    }*/
 }
